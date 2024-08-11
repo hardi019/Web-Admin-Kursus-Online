@@ -243,9 +243,19 @@ th {
         <p class="no-data">Tidak ada data kursus yang tersedia.</p>
     <?php endif; ?>
     <!-- Pagination Links -->
-    <ul class="pagination">
-        <!-- Pagination logic -->
-    </ul>
+<ul class="pagination">
+                <?php if ($currentPage > 1): ?>
+                    <li><a href="?page=<?php echo $currentPage - 1; ?>">&laquo; Previous</a></li>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li><a href="?page=<?php echo $i; ?>" class="<?php echo $i == $currentPage ? 'active' : ''; ?>"><?php echo $i; ?></a></li>
+                <?php endfor; ?>
+
+                <?php if ($currentPage < $totalPages): ?>
+                    <li><a href="?page=<?php echo $currentPage + 1; ?>">Next &raquo;</a></li>
+                <?php endif; ?>
+            </ul>
 </div>
 
         </div>
